@@ -25,14 +25,14 @@ public class TipCalculatorBigDecimal2 {
 		} 
 
 		System.out.println("Tip Calculator");
-	}
+	}   
 
 	public static void printTipValue(double p_Cost, double p_Percent)
 	{
 
-		BigDecimal percentageTip = new BigDecimal(p_Percent) ; //initializing a BigDecimal variable - the number of the percentage you want to pay.
+		BigDecimal percentageTip = new BigDecimal(p_Percent) ; //initializing a BigDecimal variable - the number of the percentage you want to pay in decimal form
 		BigDecimal numberToPercent = new BigDecimal("100"); 
-		percentageTip = percentageTip.divide(numberToPercent);
+		percentageTip = percentageTip.divide(numberToPercent); 
 		BigDecimal cost	 = new BigDecimal(p_Cost) ;  // cost of dinner
 		BigDecimal tipAmount = cost.multiply(percentageTip);  //the amount of tip only x 100
 		tipAmount.divide(numberToPercent);  //the amount of tip only
@@ -42,12 +42,13 @@ public class TipCalculatorBigDecimal2 {
 		totalWithPercentageTip = totalWithPercentageTip.add(percentageTip); //Adding to the 100%, the additional percentage of tip - ex. 115%
 
 		BigDecimal totalCost = cost.multiply(totalWithPercentageTip);  //the cost of dinner including tip - 
-		totalCost.setScale(2,RoundingMode.HALF_UP);  //displays only 2 decimal places, and rounds appropriately
+		totalCost = totalCost.setScale(2,RoundingMode.HALF_UP);  //displays only 2 decimal places, and rounds appropriately
 
 		System.out.println("");  
 		System.out.println(p_Percent + "%");  //converts BigDecimal value to String
 		System.out.println("Tip Amount:\t" + "$" + tipAmount.toString());  // amount of tip to pay
 		System.out.println("Total Amount:\t" + "$" + totalCost.toString());  // amount to pay of dinner and tip together
+		
 
 	}
 }

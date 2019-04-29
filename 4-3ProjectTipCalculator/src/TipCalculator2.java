@@ -27,7 +27,7 @@ public class TipCalculator2 {
 	{
 		double tipPercentage = p_Percent / 100;
 		double totalWithTipPercentage = tipPercentage + 1;
-
+		
 		System.out.println("");
 		System.out.println(p_Percent + "%");
 		System.out.println("Tip Amount:   " + "$" + (p_Cost * tipPercentage));

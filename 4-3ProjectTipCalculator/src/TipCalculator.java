@@ -1,4 +1,4 @@
-import java.math.BigDecimal;
+
 import java.math.RoundingMode;
 import java.util.Scanner;
 
@@ -6,7 +6,6 @@ public class TipCalculator {
 
 	public static void main(String[] args) {
 
-		System.out.println("Console");
 		System.out.println("Tip Calculator");
 		Scanner sc = new Scanner(System.in);
 		String answer = "y";
@@ -19,10 +18,7 @@ public class TipCalculator {
 			double tipAmount = Math.round(cost * (percentageTip * 100)) * 0.01;
 			double totalPercentageTip = 1.15;
 			double totalAmount = Math.round(cost * (totalPercentageTip * 100)) * 0.01;
-			System.out.println(" ");
-			System.out.println(Math.round(percentageTip * 100) + "%");
-			System.out.println("Tip Amount: $" + tipAmount);
-			System.out.println("Total Amount: $" + totalAmount);
+
 
 			percentageTip = .20;
 			tipAmount = Math.round(cost * (percentageTip * 100)) * 0.01;
