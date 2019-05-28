@@ -39,6 +39,7 @@ public class PurchaseRequestLineItemController {
 		return jr;
 	}
 
+
 	@GetMapping("/{id}")
 	public JsonResponse get(@PathVariable int id) {
 		JsonResponse jr = null;
@@ -47,7 +48,7 @@ public class PurchaseRequestLineItemController {
 			if(u.isPresent())
 				jr=JsonResponse.getInstance(u);
 			else
-				jr=JsonResponse.getInstance("No purchase request line item found for id: "+id);
+				jr=JsonResponse.getInstance("No purchase request line item found for id: "+ id);
 		}
 		catch (Exception e ) {
 			jr=JsonResponse.getInstance(e);
@@ -99,7 +100,7 @@ public class PurchaseRequestLineItemController {
 	}
 
 	@PutMapping("/purchase-request-line-items/{id}")
-	public JsonResponse updateLineItem(@RequestBody PurchaseRequest u) {
+	public JsonResponse updateLineItem(@RequestBody PurchaseRequestLineItem u) {
 		JsonResponse jr = null;
 		try {
 			if (purchaseRequestLineItemRepo.existsById(u.getId())) {
@@ -153,6 +154,18 @@ public class PurchaseRequestLineItemController {
 		return jr;
 	}
 	
+	@GetMapping("/lines-for-pr/{id}")
+	public JsonResponse getByPRid(@PathVariable int id) {
+		JsonResponse jr = null;
+		try {
+				jr=JsonResponse.getInstance(purchaseRequestLineItemRepo.findByPurchaseRequestID(id));
+		}
+		catch (Exception e ) {
+			jr=JsonResponse.getInstance(e);
+		}
+		return jr;
+	
+	
 //	@PostMapping("/authenticateAndReview")
 //	public JsonResponse authenticateAndReview(@RequestBody User u) {
 //		JsonResponse jr = null;
@@ -172,5 +185,5 @@ public class PurchaseRequestLineItemController {
 //		
 //			
 //	}
-	
+	}
 }

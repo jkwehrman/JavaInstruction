@@ -55,42 +55,6 @@ public class VendorController {
 		return jr;
 	}
 
-	//	@GetMapping("/{name}")
-	//	public JsonResponse get(@PathVariable String name) {
-	//		JsonResponse jr = null;
-	//		try {
-	//			Optional<Vendor> u = vendorRepo.findByName(name);
-	//			if(u.isPresent())
-	//				jr=JsonResponse.getInstance(u);
-	//			else
-	//				jr=JsonResponse.getInstance("No vendor name found: "+name);
-	//		}
-	//		catch (Exception e ) {
-	//			jr=JsonResponse.getInstance(e);
-	//		}
-	//		return jr;
-	//
-	//	}
-	
-//	@GetMapping("/userName")
-//	public JsonResponse getByUserName(@RequestParam ("userName") String userName) {
-//		JsonResponse jr = null;
-//		try {
-//			Optional<User> u = userRepo.findByUserName(userName);
-//
-//			if(u.isPresent())
-//				jr=JsonResponse.getInstance(u);
-//			else
-//				jr=JsonResponse.getInstance("No product found for code: "+userName);
-//		}
-//		catch (Exception e ) {
-//			jr=JsonResponse.getInstance(e);
-//		}
-//		return jr;
-//
-//		//change to use for get from code='java'
-//	}
-
 		@PostMapping("/")
 		public JsonResponse add(@RequestBody Vendor u) {
 			JsonResponse jr = null;

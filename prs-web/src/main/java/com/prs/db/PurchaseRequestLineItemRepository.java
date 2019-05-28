@@ -1,22 +1,17 @@
 package com.prs.db;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
-import com.prs.business.User;
-import com.prs.business.PurchaseRequest;
 import com.prs.business.PurchaseRequestLineItem;
 
 public interface PurchaseRequestLineItemRepository extends CrudRepository<PurchaseRequestLineItem, Integer> {
 
-//	public Object save(PurchaseRequestLineItem u);
+	Optional<PurchaseRequestLineItem> findBypurchaseRequestID(int purchaseRequestID);
 
-	void delete(PurchaseRequestLineItem u);
+	List<PurchaseRequestLineItem> findByPurchaseRequestID(int id);
 
-	Object save(PurchaseRequest u);
-
-	void delete(PurchaseRequest u);
+//	Object findAllPurchaseRequestID(int id);
 	
-	
-
 } 
 
