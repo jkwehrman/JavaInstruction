@@ -1,5 +1,6 @@
 package com.prs.db;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,6 +12,10 @@ public interface PurchaseRequestRepository extends CrudRepository <PurchaseReque
 
 	public Optional<PurchaseRequest> findByUserID(int ID);
 
-	public Object findByStatus(String string);
+	public Optional<PurchaseRequest> findByStatus(String string);
 	
-}
+	public List<PurchaseRequest> findByStatusAndUserIDNot(String status, Integer userID);
+
+	
+
+} 

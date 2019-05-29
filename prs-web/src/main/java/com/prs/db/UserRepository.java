@@ -8,8 +8,11 @@ import com.prs.business.User;
 import com.prs.business.PurchaseRequest;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
-
 	public Optional<User> findByUserName(String userName);
-	public Optional<User> findByUserNameAndPassword(String userName, String password);
+	public static Optional<User> findByUserNameAndPassword(String userName, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
 

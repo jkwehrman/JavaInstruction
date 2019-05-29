@@ -3,9 +3,12 @@ package com.prs.business;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PurchaseRequest {
@@ -13,6 +16,8 @@ public class PurchaseRequest {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@ManyToOne(fetch=FetchType.EAGER)
+  	@JoinColumn(name = "userID")
 	private int userID;
 	private String description;
 	private String justification;
@@ -23,6 +28,11 @@ public class PurchaseRequest {
 	private java.util.Date submittedDate;
 	private String reasonForRejection;
 
+
+
+//    @ManyToOne(fetch=FetchType.EAGER)
+//    @JoinColumn(name = "userID")
+//    private User user;
 	
 	public PurchaseRequest () {
 	id =0;

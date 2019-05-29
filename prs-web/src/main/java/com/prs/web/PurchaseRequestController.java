@@ -70,21 +70,21 @@ public class PurchaseRequestController {
 		}
 		return jr;
 	}
-		
-		@PostMapping("/submit-new")
-		public JsonResponse submitNew(@RequestBody PurchaseRequest u) {
-			JsonResponse jr = null;
-			u.setStatus("new");
-			try {
-				jr=JsonResponse.getInstance(purchaseRequestRepo.save(u));
-			}
-			catch (Exception e ) {
-				e.printStackTrace();
-				jr=JsonResponse.getInstance(e);
-			}
-			return jr;
+
+	@PostMapping("/submit-new")
+	public JsonResponse submitNew(@RequestBody PurchaseRequest u) {
+		JsonResponse jr = null;
+		u.setStatus("new");
+		try {
+			jr=JsonResponse.getInstance(purchaseRequestRepo.save(u));
 		}
-	
+		catch (Exception e ) {
+			e.printStackTrace();
+			jr=JsonResponse.getInstance(e);
+		}
+		return jr;
+	}
+
 	@PutMapping("/submit-review/{id}")
 	public JsonResponse SubmitForReview(@RequestBody PurchaseRequest u) {
 		JsonResponse jr = null;
@@ -127,7 +127,7 @@ public class PurchaseRequestController {
 		}
 		return jr;
 	}
-	
+
 	@PutMapping("/approve/{id}")
 	public JsonResponse approve(@RequestBody PurchaseRequest u) {
 		JsonResponse jr = null;
@@ -146,7 +146,7 @@ public class PurchaseRequestController {
 		}
 		return jr;
 	}
-	
+
 	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody PurchaseRequest u) {
 		JsonResponse jr = null;
@@ -164,7 +164,7 @@ public class PurchaseRequestController {
 		}
 		return jr;
 	}
-		
+
 	@DeleteMapping("/{id}")
 	public JsonResponse delete(@RequestBody PurchaseRequest u) {
 		JsonResponse jr = null;
@@ -183,19 +183,23 @@ public class PurchaseRequestController {
 		}
 		return jr;
 	}
-	
-	@GetMapping("/list-review")
-	public JsonResponse getListReview() {
+
+	@PostMapping("/list-review")
+	public JsonResponse listReview() {
 		JsonResponse jr = null;
 		try {
-			jr=JsonResponse.getInstance(purchaseRequestRepo.findByStatus("review"));
-		
-		}
+			List<PurchaseRequest> pr = purchaseRequestRepo.findByStatusAndUserIDNot("review", 1);
+			if(!pr.isEmpty()) {
+				jr=JsonResponse.getInstance(pr);
+			}	else {
+				jr=JsonResponse.getInstance("No purchase request records found for status review and user ID 3.");
+			}
+		} 
 		catch (Exception e ) {
 			jr=JsonResponse.getInstance(e);
 		}
 		return jr;
 	}
-
 }
+
 

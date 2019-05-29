@@ -49,7 +49,7 @@ public class UserController {
 	public JsonResponse authenticate(@RequestBody User u) {
 		JsonResponse jr = null;
 		try {
-			Optional<User> user = userRepo.findByUserNameAndPassword(u.getUserName(), u.getPassword());
+			Optional<User> user = UserRepository.findByUserNameAndPassword(u.getUserName(), u.getPassword());
 			if(user.isPresent()) {
 				jr=JsonResponse.getInstance(user);
 			}	else {
