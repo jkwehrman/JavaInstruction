@@ -88,7 +88,8 @@ public class PurchaseRequestController {
 	@PutMapping("/submit-review/{id}")
 	public JsonResponse SubmitForReview(@RequestBody PurchaseRequest u) {
 		JsonResponse jr = null;
-		if (u.getTotal()<50.00) {
+		double costLimit = 50.00;
+		if (u.getTotal() < costLimit) {
 			u.setStatus("Approved");	
 		}
 		else {

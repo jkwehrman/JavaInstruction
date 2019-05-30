@@ -16,6 +16,8 @@ public interface PurchaseRequestRepository extends CrudRepository <PurchaseReque
 	
 	public List<PurchaseRequest> findByStatusAndUserIDNot(String status, Integer userID);
 
+	public Object save(int i);
+
 	
 
 } 

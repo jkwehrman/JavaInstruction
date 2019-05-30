@@ -16,7 +16,7 @@ public class PurchaseRequest {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(fetch=FetchType.EAGER)
+//	@ManyToOne(fetch=FetchType.EAGER)
   	@JoinColumn(name = "userID")
 	private int userID;
 	private String description;

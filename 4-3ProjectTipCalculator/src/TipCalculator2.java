@@ -12,7 +12,7 @@ public class TipCalculator2 {
 			System.out.println("Cost of meal:  ");
 			double cost  = sc.nextDouble();
 
-			//call method printTipValue
+			//call method printTipValue - create a for loop
 			printTipValue (cost, 15);
 			printTipValue (cost, 20);
 			printTipValue (cost, 25);
