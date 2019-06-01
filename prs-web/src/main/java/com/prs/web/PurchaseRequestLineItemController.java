@@ -127,8 +127,8 @@ public class PurchaseRequestLineItemController {
 	public JsonResponse addPRLI(@RequestBody PurchaseRequestLineItem u) {
 		JsonResponse jr = null;
 		try {
+			
 			jr=JsonResponse.getInstance(purchaseRequestLineItemRepo.save(u));
-
 			int prid = u.getPurchaseRequestID();
 			int q = u.getQuantity();
 			int pid = u.getProductID();
@@ -141,14 +141,14 @@ public class PurchaseRequestLineItemController {
 			Double newT = t+(q*itemp);  
 			pr.setTotal(newT);
 			purchaseRequestRepo.save(pr);
+			jr=JsonResponse.getInstance("Line Item was added and the total $" + newT + " was updated.");
 		}
 		catch (Exception e ) {
 			jr=JsonResponse.getInstance(e);
 		}
 		return jr;
 	}
-
-
+	
 	@DeleteMapping("/purchase-request-line-items/{id}")
 	public JsonResponse deletePRLI(@RequestBody PurchaseRequestLineItem u) {
 		JsonResponse jr = null;
@@ -174,6 +174,8 @@ public class PurchaseRequestLineItemController {
 			// 7th step update pr
 			pr.setTotal(newT);
 			purchaseRequestRepo.save(pr);
+			jr=JsonResponse.getInstance("Line Item was deleted and the total $" + newT + " was updated.");
+
 		}
 
 		catch (Exception e ) {
@@ -209,6 +211,8 @@ public class PurchaseRequestLineItemController {
 			double newT = pr.getTotal() - (itemP * oldPRLI.getQuantity()) + (itemP * newQ);
 			pr.setTotal(newT);
 			purchaseRequestRepo.save(pr);
+			jr=JsonResponse.getInstance("The quantity of line Item was changed and the total $" + newT + " was updated.");
+
 		}
 
 		catch (Exception e ) {

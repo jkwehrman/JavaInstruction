@@ -52,21 +52,6 @@ public class ProductController {
 		return jr;
 	}
 
-	@GetMapping("/{partNumber}")
-	public JsonResponse getFromPartNumber(@PathVariable String partNumber) {
-		JsonResponse jr = null;
-		try {
-			Optional<Product> u = productRepo.findByPartNumber(partNumber);
-			if(u.isPresent())
-				jr=JsonResponse.getInstance(u);
-			else
-				jr=JsonResponse.getInstance("No product found for partNumber: "+partNumber);
-		}
-		catch (Exception e ) {
-			jr=JsonResponse.getInstance(e);
-		}
-		return jr;
-	}
 
 	@PostMapping("/")
 	public JsonResponse add(@RequestBody Product u) {
